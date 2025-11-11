@@ -1,0 +1,9 @@
+<svg width="100%" height="100%" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" style="background:#f9f9f9; font-family:Arial, sans-serif">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f9f9f9" />
+
+  <!-- 404 Text -->
+  <text x="50%" y="40%" text-anchor="middle" font-size="120" font-weight="bold" fill="#333">
+    Redirecting...
+  </text>
+</svg>

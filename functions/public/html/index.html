@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <meta name="apple-itunes-app" content="app-id={{iosItunesID}}, app-argument=https://{{hostname}}{{appredirect}}" />
+
+    <link rel="icon" type="image/png" href="{{favicon}}" />
+    <link rel="mask-icon" href="{{maskicon}}" color="#e63f41" />
+
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}" />
+    <meta name="Keywords" content="{{sitekeywords}}">
+
+    <meta property="og:title" content="{{title}}" />
+    <meta property="og:description" content="{{description}}" />
+    <meta property="og:image" content="{{thumbnail}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="{{sitename}}">
+    <!-- <meta property="og:type" content="video.other" />
+    <meta property="og:video:url" content="{{videoUrl}}">
+    <meta property="og:video:secure_url" content="{{videoUrl}}">
+    <meta property="og:video:width" content="1280">
+    <meta property="og:video:height" content="720">
+    <meta property="og:video:type" content="video/mp4"> -->
+
+    <meta property="al:ios:app_store_id" content="{{iosItunesID}}">
+    <meta property="al:ios:app_name" content="{{sitename}}">
+    <meta property="al:android:app_name" content="{{sitename}}">
+    <meta property="al:android:package" content="{{androidBundleID}}">
+    <meta property="al:ios:url" content="https://{{hostname}}{{appredirect}}">
+    <meta property="al:android:url" content="https://{{hostname}}{{appredirect}}">
+    <meta property="al:web:url" content="https://{{hostname}}{{appredirect}}">
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@{{twitterhandle}}">
+    <meta name="twitter:title" content="{{title}}" />
+    <meta name="twitter:description" content="{{description}}" />
+    <meta name="twitter:image" content="{{thumbnail}}" />
+    <meta name="twitter:url" content="https://{{hostname}}{{appredirect}}" />
+    <!-- <meta name="twitter:player:stream" content="{{videoUrl}}" />
+    <meta name="twitter:player:width" content="1280">
+    <meta name="twitter:player:height" content="720"> -->
+    <!-- <div id="watch7-content" class="watch-main-col" itemscope itemid="" itemtype="http://schema.org/VideoObject">
+        <link itemprop="url" href="{{videoUrl}}">
+        <meta itemprop="name" content="{{title}}">
+        <meta itemprop="description" content="{{description}}">
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <link itemprop="url" href="https://{{hostname}}">
+            <link itemprop="name" content="{{sitename}}">
+        </span>
+        <script
+            type="application/ld+json">{"@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@id": "http:\/\/www.{{hostname}}\/home", "name": "{{sitename}}"}}]}</script>
+        <link itemprop="thumbnailUrl" href="{{thumbnail}}">
+        <span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject">
+            <link itemprop="url" href="{{thumbnail}}">
+            <meta itemprop="width" content="1280">
+            <meta itemprop="height" content="720">
+        </span>
+        <link itemprop="embedUrl" href="{{videoUrl}}">
+        <meta itemprop="playerType" content="HLS">
+        <meta itemprop="width" content="1280">
+        <meta itemprop="height" content="720">
+        <meta itemprop="isFamilyFriendly" content="true">
+        <meta itemprop="regionsAllowed"
+            content="AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,SS,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW">
+        <meta itemprop="interactionCount" content="">
+        <meta itemprop="datePublished" content="2024-06-20T03:59:32-07:00">
+        <meta itemprop="uploadDate" content="2024-06-20T03:59:32-07:00">
+        <meta itemprop="genre" content="">
+    </div> -->
+    <meta name="twitter:app:name:iphone" content="{{sitename}}">
+    <meta name="twitter:app:id:iphone" content="{{iosItunesID}}">
+    <meta name="twitter:app:name:ipad" content="{{sitename}}">
+    <meta name="twitter:app:id:ipad" content="{{iosItunesID}}">
+    <meta name="twitter:app:url:iphone" content="https://{{hostname}}{{appredirect}}">
+    <meta name="twitter:app:url:ipad" content="https://{{hostname}}{{appredirect}}">
+    <meta name="twitter:app:name:googleplay" content="{{sitename}}">
+    <meta name="twitter:app:id:googleplay" content="{{androidBundleID}}">
+    <meta name="twitter:app:url:googleplay" content="https://play.google.com/store/apps/details?id={{androidBundleID}}">
+
+    <meta name="theme-color" content="#031e45" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{appletouchicon}}" />
+
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: black;
+            background-size: cover;
+            background-image: url('{{backgroundImage}}');
+        }
+
+        #status {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* width: 200px; */
+        }
+
+        #no-app-install {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #open-url {
+            background-color: #eb4547;
+            border-radius: 7px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 5rem;
+            height: 3.5rem;
+            width: 240px;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="status" src="{{statusImage}}" />
+    <div id="no-app-install" style="display: none;">
+        <p id="info-text" style="text-align: center; color: white; font-size: 1rem;">
+            Oops! It looks like you don't have {{sitename}} App installed.
+        </p>
+        <button id="open-url"></button>
+    </div>
+</body>
+
+<script>
+    const customButtonDiv = document.getElementById('no-app-install');
+    const customButton = document.getElementById('open-url');
+    const statusImage = document.getElementById('status');
+
+    if ('{{redirectToStore}}' == 'true') {
+        if ('{{osfamily}}' === 'iOS') {
+            window.location.href = 'https://{{hostname}}{{appredirect}}?forceRedirectionToStore=true&platform={{osfamily}}&link=https://apps.apple.com/app/id{{appStoreID}}';
+        } else if ('{{osfamily}}'.includes('Android')) {
+            if ('{{androidScheme}}' != 'false') {
+                const fallbackUrl = encodeURIComponent(
+                    'https://play.google.com/store/apps/details?id={{androidBundleID}}',
+                );
+                window.location.href = `intent://{{hostname}}{{appredirect}}#Intent;action=android.intent.action.VIEW;category=android.intent.category.DEFAULT;scheme={{androidScheme}};package={{androidBundleID}};S.browser_fallback_url=${fallbackUrl};end`;
+            } else {
+                window.location.href =
+                    'https://play.google.com/store/apps/details?id={{androidBundleID}}';
+            }
+        } else {
+            if ('{{redirectUrl}}' != '') {
+                window.location.href = '{{redirectUrl}}';
+            }
+        }
+    } else if ('{{redirectUrl}}' != '') {
+        window.location.href = '{{redirectUrl}}';
+    }
+</script>
+
+</html>
