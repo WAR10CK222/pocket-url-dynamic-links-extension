@@ -109,7 +109,7 @@ export function SetupPage() {
 
             <section className="card">
                 <div className="card-head"><h2>Create links from your backend</h2></div>
-                <Snippet code={`import { createShortLink } from "${config.packageName ?? "@war10ck/pocket-url"}/admin";
+                <Snippet code={`import { createShortLink } from "${config.packageName ?? "@war10ck222/pocket-url"}/admin";
 
 const link = await createShortLink(
     { redirectUrl: "https://example.com/article/42", og: { title: "Article 42" } },

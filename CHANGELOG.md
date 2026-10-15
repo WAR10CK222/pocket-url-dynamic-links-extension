@@ -20,7 +20,7 @@ First release as a Firebase function kit. Firebase Extensions is deprecated (shu
   - link management and CSV import
   - QR codes with UTM presets
   - operations page (404s, errors, latency, provisioning status) and setup checklist
-- Admin REST API (`/api/v1`) and an Admin SDK helper (`@war10ck/pocket-url/admin`).
+- Admin REST API (`/api/v1`) and an Admin SDK helper (`@war10ck222/pocket-url/admin`).
 - `/_/resolve/:slug` endpoint for mobile apps opened by universal links / App Links.
 - Per-link platform destinations (`iosFallbackUrl`, `androidFallbackUrl`, `desktopUrl`), query forwarding and tags.
 - Bot vs human counting, project-wide daily stats, 404, error and latency counters, and a daily retention job.

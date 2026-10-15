@@ -36,7 +36,7 @@ storage:    Realtime Database, under DATABASE_PATH
 
 ```bash
 cd your-firebase-project
-firebase functions:kits:install --package @war10ck/pocket-url
+firebase functions:kits:install --package @war10ck222/pocket-url
 firebase deploy --only functions:<instance-id>
 ```
 
@@ -132,7 +132,7 @@ Per link, **Open in the app** (`redirectToStore`) controls the browser fallback 
 **From your backend** (same project), with the Admin SDK helper:
 
 ```ts
-import { createShortLink } from "@war10ck/pocket-url/admin";
+import { createShortLink } from "@war10ck222/pocket-url/admin";
 
 const link = await createShortLink(
     { redirectUrl: "https://yourbrand.com/article/42", og: { title: "Article 42" } },

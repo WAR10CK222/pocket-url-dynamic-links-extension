@@ -14,4 +14,4 @@ export const regionParam = params.defineString("FUNCTION_DEFAULT_REGION", {
 setGlobalOptions({ region: regionParam, maxInstances: 20 });
 
 // Exports the functions located in the kit.
-export * from "@war10ck/pocket-url";
+export * from "@war10ck222/pocket-url";

@@ -2,7 +2,7 @@
  * Helpers for your own backend code (Cloud Functions, servers, scripts) to manage
  * Pocket URL links with the Admin SDK, without going through the HTTP API.
  *
- *   import { createShortLink } from "@war10ck/pocket-url/admin";
+ *   import { createShortLink } from "@war10ck222/pocket-url/admin";
  *   const link = await createShortLink(
  *       { redirectUrl: "https://acme.com/article/42", og: { title: "Article 42" } },
  *       { shortDomain: "go.acme.com" },
