@@ -1,0 +1,87 @@
+# Publishes the kit to npm with trusted publishing (OIDC, no token) and provenance.
+#
+# One-time setup. npm only offers trusted publishing for a package that already exists, so:
+#   1. Publish the first version (0.1.0-rc.0, tag "next") by hand from a clean clone with `npm publish`.
+#   2. On npmjs.com: package Settings → Trusted Publisher → GitHub Actions, with
+#      user WAR10CK222, repository pocket-url-dynamic-links-extension, workflow "release.yml",
+#      environment "npm". (Or: npx npm@11 trust github --repo <owner>/<repo> --file release.yml --env npm --allow-publish)
+# The repository must stay public for provenance.
+#
+# Flow: run with stage=rc (publishes <version>-rc.N under the "next" tag), test it with
+#   firebase functions:kits:install --package <name>@<version>-rc.N
+# then run with stage=stable (publishes <version> under "latest").
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: Release stage
+        type: choice
+        options: [rc, stable]
+        default: rc
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: npm
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+          cache: npm
+          cache-dependency-path: |
+            npm-shrinkwrap.json
+            dashboard/package-lock.json
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+
+      # Trusted publishing needs npm 11.5.1 or later.
+      - run: npm install -g npm@^11.5.1
+
+      - run: npm ci
+      - run: npm ci --prefix dashboard
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - run: npm run test:integration
+
+      - name: Compute version
+        id: version
+        run: node scripts/release.cjs version "${{ inputs.stage }}" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare package
+        run: |
+          npm version "${{ steps.version.outputs.version }}" --no-git-tag-version --allow-same-version
+          node scripts/release.cjs prune-shrinkwrap
+          npm pkg delete devDependencies
+          node scripts/release.cjs check-pack
+
+      - name: Publish
+        run: npm publish --provenance --access public --tag "${{ steps.version.outputs.tag }}"
+
+      - name: Tag and create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          node scripts/release.cjs notes "$VERSION" > release-notes.md
+          git tag "v$VERSION"
+          git push origin "v$VERSION"
+          gh release create "v$VERSION" --title "v$VERSION" --notes-file release-notes.md \
+            ${{ inputs.stage == 'rc' && '--prerelease' || '' }}

@@ -1,0 +1,30 @@
+{
+    "name": "pocket-url-dashboard",
+    "private": true,
+    "version": "0.1.0",
+    "description": "Pocket URL admin dashboard. Built into ../lib/dashboard and deployed to Hosting at /admin by the provision task.",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc --noEmit && vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "chart.js": "^4.5.1",
+        "firebase": "^12.19.0",
+        "papaparse": "^5.5.3",
+        "qrcode": "^1.5.4",
+        "react": "^19.2.0",
+        "react-chartjs-2": "^5.3.1",
+        "react-dom": "^19.2.0"
+    },
+    "devDependencies": {
+        "@types/papaparse": "^5.5.2",
+        "@types/qrcode": "^1.5.6",
+        "@types/react": "^19.2.0",
+        "@types/react-dom": "^19.2.0",
+        "@vitejs/plugin-react": "^5.2.0",
+        "typescript": "~5.9.3",
+        "vite": "^7.3.7"
+    }
+}

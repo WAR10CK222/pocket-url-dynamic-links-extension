@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="{{themeColor}}">
+    <meta name="robots" content="noindex">
+
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}">
+    <link rel="icon" href="{{favicon}}">
+    <link rel="canonical" href="{{canonicalUrl}}">
+
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:url" content="{{canonicalUrl}}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{siteName}}">
+    <meta property="al:web:url" content="{{destination}}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{title}}">
+    <meta name="twitter:description" content="{{description}}">
+    {{{headExtra}}}
+
+    <style>
+        :root {
+            --accent: {{themeColor}};
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000 url("{{backgroundImage}}") center / cover no-repeat;
+            color: #fff;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 24px;
+            text-align: center;
+            max-width: 360px;
+        }
+
+        #actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        #actions[hidden] {
+            display: none;
+        }
+
+        .button {
+            display: block;
+            padding: 14px 20px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .button.secondary {
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        .continue {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <img id="status" src="{{statusImage}}" alt="" width="96" height="96">
+        <h1 style="font-size: 1.1rem; margin: 0;">{{title}}</h1>
+        <div id="actions" hidden>
+            <a id="open-app" class="button" href="{{destination}}">{{openAppLabel}}</a>
+            <a id="get-app" class="button secondary" href="{{destination}}">Get the app</a>
+        </div>
+        <a id="open-web" class="continue" href="{{destination}}">Continue to website</a>
+    </main>
+
+    <script id="pocket-url-config" type="application/json">{{{pageConfig}}}</script>
+    <script>
+        (function () {
+            var cfg = {};
+            try {
+                cfg = JSON.parse(document.getElementById("pocket-url-config").textContent || "{}");
+            } catch (e) {
+                return;
+            }
+            if (cfg.mode !== "interstitial") return;
+
+            document.getElementById("open-app").href = cfg.appUrl;
+            document.getElementById("get-app").href = cfg.fallbackUrl;
+            document.getElementById("open-web").href = cfg.destination;
+            document.getElementById("actions").hidden = false;
+
+            if (cfg.autoRedirect) {
+                // Android: the intent URL opens the app, or Chrome follows its fallback.
+                // iOS: the app had its chance via universal links before this page loaded.
+                window.location.replace(cfg.platform === "android" ? cfg.appUrl : cfg.fallbackUrl);
+            }
+        })();
+    </script>
+</body>
+
+</html>

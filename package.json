@@ -1,0 +1,93 @@
+{
+    "name": "@war10ck/pocket-url",
+    "version": "0.1.0",
+    "description": "Self-hosted short links and deep links for Firebase (a Dynamic Links replacement) with an analytics dashboard, deployable as a Firebase function kit.",
+    "license": "Apache-2.0",
+    "author": {
+        "name": "Shubham Patel",
+        "email": "shubhvinpatel98@gmail.com",
+        "url": "https://solvemybizz.org"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/WAR10CK222/pocket-url-dynamic-links-extension.git"
+    },
+    "keywords": [
+        "firebase",
+        "function-kit",
+        "firebase-functions",
+        "dynamic-links",
+        "short-links",
+        "deep-links",
+        "url-shortener",
+        "analytics"
+    ],
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./lib/index.d.ts",
+            "default": "./lib/index.js"
+        },
+        "./admin": {
+            "types": "./lib/admin.d.ts",
+            "default": "./lib/admin.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "lib",
+        "assets",
+        "npm-shrinkwrap.json",
+        "README.md",
+        "CHANGELOG.md",
+        "LICENSE"
+    ],
+    "engines": {
+        "node": "22"
+    },
+    "publishConfig": {
+        "access": "public",
+        "tag": "next"
+    },
+    "scripts": {
+        "build": "npm run build:kit && npm run build:dashboard",
+        "build:kit": "tsc -b",
+        "build:dashboard": "npm --prefix dashboard run build",
+        "clean": "tsc -b --clean",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:integration": "npx -y firebase-tools@15.34.0 emulators:exec --project demo-pocket-url --only database,auth --config example/firebase.json \"vitest run --config vitest.integration.config.ts\"",
+        "dev:server": "npm run build:kit && npx -y firebase-tools@15.34.0 emulators:exec --project demo-pocket-url --only database,auth --config example/firebase.json \"node scripts/dev-server.cjs\"",
+        "serve": "npm run build:kit && node lib/redirect/server.js",
+        "prepublishOnly": "npm run build && npm test"
+    },
+    "dependencies": {
+        "express": "^5.1.0",
+        "fast-geoip": "^1.1.88",
+        "firebase-admin": "^14.4.0",
+        "firebase-functions": "^7.4.0",
+        "google-auth-library": "^11.3.0",
+        "isbot": "^5.1.28",
+        "ua-parser-js": "^1.0.41",
+        "zod": "^4.1.0"
+    },
+    "peerDependencies": {
+        "firebase-admin": "^14.4.0",
+        "firebase-functions": "^7.4.0"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.39.0",
+        "@types/express": "^5.0.6",
+        "@types/node": "^22.10.0",
+        "@types/ua-parser-js": "^0.7.39",
+        "eslint": "^9.39.0",
+        "globals": "^16.0.0",
+        "typescript": "~5.9.3",
+        "typescript-eslint": "^8.46.0",
+        "vitest": "^3.2.7"
+    }
+}
